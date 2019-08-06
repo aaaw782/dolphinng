@@ -1,0 +1,16 @@
+<li routerLinkActive="{{link?'active':''}}" class="sub-nav-item" [ngClass]="{'has-child':hasChild,'disabled':disabled!==undefined&&disabled!==false}">
+    <a routerLink="{{link}}" *ngIf="!!link&&!(disabled!==undefined&&disabled!==false)">
+        <i class="sub-nav-icon fa fa-caret-right" *ngIf="hasChild"></i>
+        <i class="sub-nav-icon fa fa-caret-down" *ngIf="hasChild"></i> {{text}}
+        <b class="pull-right {{badgeClass}}" *ngIf="badgeValue">{{badgeValue}}</b>
+    </a>
+    <a *ngIf="!link||(disabled!==undefined&&disabled!==false)">
+        <i class="sub-nav-icon fa fa-caret-right" *ngIf="hasChild"></i>
+        <i class="sub-nav-icon fa fa-caret-down" *ngIf="hasChild" style="margin-left: -18px"></i> {{text}}
+        <b class="pull-right {{badgeClass}}" *ngIf="badgeValue">{{badgeValue}}</b>
+    </a>
+    <div class="thirth-nav-wrap">
+        <ng-content></ng-content>
+        <ng-container #childrenHost></ng-container>
+    </div>
+</li>
